@@ -1,4 +1,3 @@
-// ProductCard.jsx
 import React from 'react';
 import './ProductCard.css';
 
@@ -9,7 +8,7 @@ function ProductCard({ product }) {
       <h3>{product.name}</h3>
       <p>{product.description}</p>
       <p>Precio: ${product.price}</p>
-      {/* Agrega más detalles del producto según sea necesario */}
+    
     </div>
   );
 }

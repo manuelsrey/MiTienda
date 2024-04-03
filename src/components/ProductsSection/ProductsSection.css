@@ -1,8 +1,8 @@
-/* ProductsSection.css */
+
 .product-section {
-    display: flex; /* Utiliza flexbox para distribuir las tarjetas de producto */
-    flex-wrap: wrap; /* Envuelve las tarjetas de producto cuando se alcanza el límite de la página */
-    justify-content: space-between; /* Distribuye las tarjetas de producto con espacio entre ellas */
-    margin-bottom: 16px; /* Agrega espacio inferior entre las filas de tarjetas de producto */
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    margin-bottom: 16px; 
   }
   
