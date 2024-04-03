@@ -1,7 +1,12 @@
+// Header.jsx
 import React from 'react';
-import './Header.css'; 
+import './Header.css';
+import { useCart } from '../../context/CartContext'; // Importa el hook useCart
+import cartIcon from '../../assets/Icons/cartIcon.png';
 
 function Header({ setSearchTerm }) {
+  const { cartItems } = useCart(); // Obtiene el estado del carrito
+
   return (
     <header>
       <div className="logo">
@@ -11,8 +16,9 @@ function Header({ setSearchTerm }) {
         <ul>
           <li>Inicio</li>
           <li>Productos</li>
-          <li>Carrito</li>
-        
+          <li>
+            <img src={cartIcon} alt="Carrito" />
+            <span>({cartItems.length})</span></li> {/* Muestra el número de productos en el carrito */}
         </ul>
       </nav>
    
