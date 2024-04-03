@@ -1,0 +1,36 @@
+.product-card {
+    width: 300px; /* Define el ancho deseado */
+    height: auto; /* Ajusta la altura automáticamente */
+    border: 1px solid #ddd; /* Añade un borde para mayor definición */
+    border-radius: 8px; /* Agrega bordes redondeados */
+    padding: 16px; /* Añade espacio interno alrededor del contenido */
+    margin: 16px; /* Agrega espacio externo entre las tarjetas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agrega una sombra sutil */
+  }
+  
+  /* Estilos para la imagen del producto */
+  .product-card img {
+    width: 100%; /* Haz que la imagen ocupe todo el ancho de la tarjeta */
+    height: auto; /* Ajusta automáticamente la altura */
+    border-radius: 8px; /* Añade bordes redondeados */
+  }
+  
+  /* Estilos para el contenido del producto */
+  .product-card h3 {
+    margin-top: 12px; /* Añade espacio superior al título */
+    font-size: 18px; /* Tamaño de fuente del título */
+    color: #333; /* Color del texto */
+  }
+  
+  .product-card p {
+    margin-top: 8px; /* Añade espacio superior al párrafo */
+    font-size: 14px; /* Tamaño de fuente del párrafo */
+    color: #666; /* Color del texto */
+  }
+  
+  .product-card .price {
+    font-size: 16px; /* Tamaño de fuente del precio */
+    font-weight: bold; /* Haz que el precio sea negrita */
+    color: #ff6600; /* Color del precio */
+  }
+  
