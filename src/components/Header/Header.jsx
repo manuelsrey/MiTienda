@@ -1,6 +1,5 @@
-// Header.jsx
 import React from 'react';
-import './Header.css'; // Importa el archivo CSS
+import './Header.css'; 
 
 function Header({ setSearchTerm }) {
   return (
@@ -13,14 +12,14 @@ function Header({ setSearchTerm }) {
           <li>Inicio</li>
           <li>Productos</li>
           <li>Carrito</li>
-          {/* Agrega más elementos de menú según sea necesario */}
+        
         </ul>
       </nav>
-      {/* Barra de búsqueda */}
+   
       <input 
         type="text" 
         placeholder="Buscar productos..." 
-        onChange={(e) => setSearchTerm(e.target.value)} // Actualizar el término de búsqueda
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
     </header>
   );

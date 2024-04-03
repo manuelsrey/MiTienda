@@ -1,8 +1,7 @@
-// App.jsx
 import React, { useState } from 'react';
 import Header from './components/Header/Header';
 import ProductSection from './components/ProductsSection/ProductsSection';
-import productos from './assets/data.json'; // Importa el archivo de datos
+import productos from './assets/data.json'; 
 import Footer from './components/Footer/Footer';
 import Banner from './components/Banner/Banner';
 
