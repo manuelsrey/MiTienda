@@ -1,8 +1,19 @@
 import React from 'react';
-import { useCart } from '../../context/CartContext'; 
+import { useCart } from '../../context/CartContext';
 
 function ShoppingCart() {
-  const { cartItems } = useCart(); 
+  const { cartItems } = useCart();
+
+  const totalPrice = cartItems.reduce((total, item) => {
+    const itemPrice = parseFloat(item.price);
+    const itemQuantity = parseInt(item.quantity);
+
+    if (!isNaN(itemPrice) && !isNaN(itemQuantity)) {
+      return total + (itemPrice * itemQuantity);
+    } else {
+      return total;
+    }
+  }, 0);
 
   return (
     <div className="shopping-cart">
@@ -15,6 +26,7 @@ function ShoppingCart() {
           <p>Subtotal: ${item.price * item.quantity}</p>
         </div>
       ))}
+      <div>Total Price: ${totalPrice.toFixed(2)}</div>
     </div>
   );
 }

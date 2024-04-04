@@ -1,34 +1,51 @@
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    position: relative;
-  }
-  
-  .logo img {
-    max-width: 100px;
-  }
-  
-  nav {
-    margin-left: auto; 
-  }
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  position: relative;
+}
+
+.logo img {
+  max-width: 100px;
+}
+
+nav {
+  margin-left: auto;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+
+
+.light-mode header {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.light-mode nav ul li a {
+  color: #333333;
+}
+
+
+.dark-mode header {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dark-mode nav ul li a {
+  color: #ffffff;
+}

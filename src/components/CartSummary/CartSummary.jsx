@@ -1,18 +1,35 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import React from 'react';
+import { useCart } from '../../context/CartContext'; 
 
-const CartSummary = () => {
-  const { cartItems } = useContext(CartContext);
+function CartSummary() {
+  const { cartItems } = useCart(); 
 
-  // Calcular el precio total de los productos en el carrito
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    cartItems.forEach(item => {
+      totalPrice += item.price * item.quantity;
+    });
+    return totalPrice.toFixed(2);
+  };
 
   return (
-    <div>
+    <div className="cart-summary">
       <h2>Resumen del Carrito</h2>
-      <p>Total: ${totalPrice}</p>
+      <ul>
+        {cartItems.map(item => (
+          <li key={item.id}>
+            <span>{item.name}</span>
+            <span>{item.quantity} x ${item.price}</span>
+            <span>Total: ${(item.price * item.quantity).toFixed(2)}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="total">
+        <span>Total:</span>
+        <span>${calculateTotalPrice()}</span>
+      </div>
     </div>
   );
-};
+}
 
 export default CartSummary;

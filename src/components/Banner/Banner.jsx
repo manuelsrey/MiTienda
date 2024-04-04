@@ -1,10 +1,15 @@
+// Banner.jsx
 import React from 'react';
 import './Banner.css';
 
-function Banner() {
+function Banner({ user }) {
   return (
     <div className="banner">
-      <p>¡20% de descuento para nuevos clientes!</p>
+      {user ? (
+        <p>¡{user.name}, aprovechate de tu 20% de descuento!</p>
+      ) : (
+        <p>Crea una cuenta para disfrutar de nuestros descuentos.</p>
+      )}
     </div>
   );
 }
