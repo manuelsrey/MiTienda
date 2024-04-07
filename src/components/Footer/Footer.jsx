@@ -1,11 +1,11 @@
 // Footer.jsx
 import React from 'react';
 import './Footer.css';
-import { useThemeContext } from '../../context/ThemeContext'; // Importa el contexto del tema
-import darkIcon from '../../assets/Icons/darkIcon.png'; // Importa tu propio icono para ambos modos
+import { useThemeContext } from '../../context/ThemeContext';
+import darkIcon from '../../assets/Icons/darkIcon.png'; 
 
 function Footer() {
-  const { toggleTheme } = useThemeContext(); // Obtiene la función para cambiar el tema del contexto del tema
+  const { toggleTheme } = useThemeContext();
 
   return (
     <footer className="footer">
