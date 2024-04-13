@@ -1,4 +1,3 @@
-// Layout.jsx
 import React, {useState} from 'react';
 import Header from '../Header/Header';
 import Banner from '../Banner/Banner';
@@ -8,6 +7,7 @@ import CartSummary from '../CartSummary/CartSummary';
 import ProductsSection from '../ProductsSection/ProductsSection';
 import productos from '../../assets/data.json'
 import LoginForm from '../LoginForm/LoginForm';
+import { Outlet } from 'react-router-dom';
 
 function Layout({ children }) {
     const [searchTerm, setSearchTerm] = useState("");
@@ -24,6 +24,7 @@ function Layout({ children }) {
             <NavigationBar />
                 
             {showCartSummary ? <CartSummary /> : <ProductsSection productos={productos} searchTerm={searchTerm} />}
+            <Outlet />
             <Footer />
             <LoginForm onLogin={handleLogin} />
     </div>

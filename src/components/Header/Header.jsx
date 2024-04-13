@@ -6,8 +6,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 
 function Header({ setSearchTerm, setShowCartSummary }) {
   const { cartItemCount } = useCart();
-  const { toggleTheme, isDarkMode } = useTheme(); // Asegúrate de obtener el estado isDarkMode
-
+  const { toggleTheme, isDarkMode } = useTheme(); 
   return (
     <header className={isDarkMode ? 'header dark-mode' : 'header light-mode'}>
       <div className="logo" onClick={() => setShowCartSummary(false)}>

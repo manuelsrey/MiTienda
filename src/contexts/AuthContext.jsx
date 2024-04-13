@@ -1,4 +1,3 @@
-// src/context/AuthContext.js
 import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
@@ -16,10 +15,8 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('user', JSON.stringify(userData));
   };
 
-  // src/context/AuthContext.js
 const logout = () => {
   if (user) {
-    //Eliminar el carrito del localStorage al cerrar sesión
     localStorage.removeItem(`cart-${user.email}`);
   }
   setUser(null);

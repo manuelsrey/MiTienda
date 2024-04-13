@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import CartSummary from "../CartSummary/CartSummary";
 
 function NavigationBar() {
     return (

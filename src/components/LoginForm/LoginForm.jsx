@@ -1,4 +1,3 @@
-// LoginForm.jsx
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext'; 
 
@@ -16,12 +15,11 @@ function LoginForm() {
       return;
     }
 
-    // Llama a la función de login pasando los datos del usuario
+    
     login({ name, email });
   };
 
   const handleLogout = () => {
-    // Llama a la función de logout
     logout();
   };
 
