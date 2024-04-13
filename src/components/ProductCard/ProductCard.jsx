@@ -1,23 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ProductCard.css';
-import { useCart } from '../../context/CartContext'; 
 
-function ProductCard({ product }) {
-  const { addToCart } = useCart(); 
-  const [selectedItems, setSelectedItems] = useState([]);
-
-  const handleAddToCart = () => {
-    addToCart(product);
-    setSelectedItems([...selectedItems, product]); 
-  };
-
+function ProductCard({ product, addToCart }) {
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.name} />
-      <h3>{product.name}</h3>
+      <img src={product.image} alt={product.title} />
+      <h3>{product.title}</h3>
       <p>{product.description}</p>
       <p>Precio: ${product.price}</p>
-      <button onClick={handleAddToCart}>Añadir a la cesta</button> 
+      <button onClick={addToCart}>Agregar a la cesta</button>
     </div>
   );
 }

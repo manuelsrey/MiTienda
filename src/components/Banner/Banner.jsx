@@ -1,12 +1,14 @@
-// Banner.jsx
 import React from 'react';
 import './Banner.css';
+import { useAuth } from '../../contexts/AuthContext';
 
-function Banner({ user }) {
+function Banner() {
+  const { user } = useAuth();
+
   return (
     <div className="banner">
       {user ? (
-        <p>¡{user.name}, aprovechate de tu 20% de descuento!</p>
+        <p>¡Hola, {user.name}! Aprovecha tu 20% de descuento.</p>
       ) : (
         <p>Crea una cuenta para disfrutar de nuestros descuentos.</p>
       )}

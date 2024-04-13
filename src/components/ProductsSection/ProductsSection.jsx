@@ -1,8 +1,15 @@
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductsSection.css';
+import { useCart } from '../../contexts/CartContext'; 
 
-function ProductSection({ productos, searchTerm }) {
+function ProductsSection({ productos, searchTerm }) {
+  const { addToCart } = useCart();
+
+
+  if (!Array.isArray(productos)) {
+    return ;
+  }
 
   const filteredProducts = searchTerm
     ? productos.filter(product =>
@@ -12,12 +19,11 @@ function ProductSection({ productos, searchTerm }) {
   
   return (
     <section className="product-section">
-      {}
       {filteredProducts.map(product => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} addToCart={() => addToCart(product)} />
       ))}
     </section>
   );
 }
 
-export default ProductSection;
+export default ProductsSection;

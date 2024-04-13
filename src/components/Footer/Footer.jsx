@@ -1,14 +1,12 @@
-// Footer.jsx
 import React from 'react';
 import './Footer.css';
-import { useThemeContext } from '../../context/ThemeContext';
-import darkIcon from '../../assets/Icons/darkIcon.png'; 
+import { useTheme } from '../../contexts/ThemeContext';
 
 function Footer() {
-  const { toggleTheme } = useThemeContext();
+  const { isDarkMode } = useTheme();
 
   return (
-    <footer className="footer">
+    <footer className={isDarkMode ? 'footer dark-mode' : 'footer light-mode'}>
       <div className="footer-section">
         <h3>Contacto</h3>
         <p>Correo electrónico: info@mitienda.com</p>
@@ -26,12 +24,6 @@ function Footer() {
         <h3>Dirección</h3>
         <p>Calle Principal, 123</p>
         <p>Ciudad, País</p>
-      </div>
-      <div className="footer-section">
-        {/* Botón de cambio de tema */}
-        <button className="theme-toggle-button" onClick={toggleTheme}>
-          <img src={darkIcon} alt="Theme Icon" /> {/* Usa tu propio icono para ambos modos */}
-        </button>
       </div>
     </footer>
   );

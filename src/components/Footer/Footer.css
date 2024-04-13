@@ -1,44 +1,43 @@
 .footer {
-    background-color: #f0f0f0;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .footer-section {
-    flex: 1;
-    margin-right: 20px;
-  }
-  
-  .footer-section h3 {
-    color: #333;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .footer-section p {
-    margin: 0;
-    color: #666;
-  }
-  
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-section ul li {
-    margin-bottom: 5px;
-    color: #666;
-  }
+  background-color: #f0f0f0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición para el cambio de tema */
+}
 
-  .footer.light-mode {
-    background-color: #ffffff;
-    color: #333333;
-  }
-  
-  /* Estilos para el modo oscuro */
-  .footer.dark-mode {
-    background-color: #333333;
-    color: #ffffff;
-  }
-  
+.footer-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.footer-section h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  margin: 0;
+  color: #666;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.footer.dark-mode {
+  background-color: #222; /* Cambia el color de fondo en modo oscuro */
+  color: #fff; /* Cambia el color de texto en modo oscuro */
+}
+
+.footer.light-mode {
+  background-color: #f0f0f0; /* Cambia el color de fondo en modo claro */
+  color: #333; /* Cambia el color de texto en modo claro */
+}
