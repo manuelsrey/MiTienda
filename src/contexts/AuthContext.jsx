@@ -15,14 +15,13 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('user', JSON.stringify(userData));
   };
 
-const logout = () => {
-  if (user) {
-    localStorage.removeItem(`cart-${user.email}`);
-  }
-  setUser(null);
-  localStorage.removeItem('user');
-};
-
+  const logout = () => {
+    if (user) {
+      localStorage.removeItem(`cart-${user.email}`);
+    }
+    setUser(null);
+    localStorage.removeItem('user');
+  };
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

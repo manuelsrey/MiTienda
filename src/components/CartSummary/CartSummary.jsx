@@ -1,5 +1,8 @@
 import React from 'react';
 import { useCart } from '../../contexts/CartContext';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import { Link } from 'react-router-dom';
 
 function CartSummary() {
   const { cart } = useCart();
@@ -8,6 +11,7 @@ function CartSummary() {
 
   return (
     <section className="cart-summary">
+      <Header />
       <h2>Resumen del Carrito</h2>
       <div className="cart-items">
         {cart.map((item, index) => ( 
@@ -18,6 +22,8 @@ function CartSummary() {
         ))}
       </div>
       <p>Total: ${total}</p>
+      <Link className="form-link" to="/">Volver a inicio</Link>
+      <Footer />
     </section>
   );
 }

@@ -1,51 +1,53 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext'; 
+import { useAuth } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function LoginForm() {
-  const { login, logout, user } = useAuth(); 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const { user, login, logout } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!name.trim() || !email.trim()) {
-      setError('Por favor, rellena todos los campos');
-      return;
-    }
-
-    
     login({ name, email });
   };
 
-  const handleLogout = () => {
-    logout();
-  };
+  if (user) {
+    return (
+      <div className="form">
+        <p>Bienvenido, {user.name}!</p>
+        <Link className="form-link" to="/">Volver a inicio</Link>
+
+        <button onClick={logout}>Cerrar Sesión</button>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      {user ? (
-        <div>
-          <p>¡Hola, {user.name}!</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h2>Login</h2>
-          {error && <p className="error">{error}</p>}
-          <div className="form-group">
-            <label htmlFor="name">Nombre:</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          <button type="submit">Iniciar sesión</button>
-        </form>
-      )}
-    </div>
+    <form className="form" onSubmit={handleSubmit}>
+      <Header />
+      <input
+        className="form-input"
+        type="text"
+        placeholder="Nombre"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+      />
+      <input
+        className="form-input"
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <button className="form-button" type="submit">Iniciar Sesión</button>
+      <Link className="form-link" to="/">Volver a inicio</Link>
+      <Footer />
+    </form>
   );
 }
 

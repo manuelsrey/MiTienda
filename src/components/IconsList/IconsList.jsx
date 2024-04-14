@@ -12,7 +12,7 @@ function IconsList({ cartItemCount }) {
   return (
     <div className="icons-list">
       <FontAwesomeIcon icon={faShoppingCart} />
-      <span className="cart-item-count">({cartItemCount})</span>
+      <span className="cart-item-count">{cartItemCount}</span> {/* Muestra el número de productos en el carrito */}
       <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} onClick={handleThemeChange} />
     </div>
   );
