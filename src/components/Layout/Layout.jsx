@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import CartSummary from '../CartSummary/CartSummary';
 import ProductsSection from '../ProductsSection/ProductsSection';
+import AdminPage from '../../views/AdminPage/AdminPage';
 import productos from '../../assets/data.json';
 import { Outlet } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -13,6 +14,14 @@ function Layout() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showCartSummary, setShowCartSummary] = useState(false);
   const { user } = useAuth(); 
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  React.useEffect(() => {
+    const storedIsAdmin = localStorage.getItem('isAdmin');
+    if (storedIsAdmin === 'true') {
+      setIsAdmin(true);
+    }
+  }, []);
 
   return (
     <div>
@@ -21,7 +30,8 @@ function Layout() {
       <NavigationBar />
           
       {showCartSummary ? <CartSummary /> : <ProductsSection productos={productos} searchTerm={searchTerm} />}
-      {user && <Outlet />} 
+      {isAdmin && <AdminPage />} 
+      {user && <Outlet />}
       <Footer />
     </div>
   );
