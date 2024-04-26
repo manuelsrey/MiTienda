@@ -1,51 +1,81 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import productos from '../../assets/data.json'; 
+import "./ProductDetails.css";
+import { Link, useParams } from "react-router-dom";
+import { UserContext } from "../../Contexts/UserContext";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import Loader from "../Loader/Loader";
 
-function ProductDetail() {
+export default function ProductDetails() {
+  const { user, setUser } = useContext(UserContext);
   const { id } = useParams();
-  const producto = productos.find((product) => product.id === Number(id));
+  const [isLoading, isSetLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [products, setProducts] = useState([]);
 
-  const [editedDescription, setEditedDescription] = useState(producto.description);
-  const [isEditing, setIsEditing] = useState(false);
-
-  const handleDescriptionChange = (event) => {
-    setEditedDescription(event.target.value);
+  const hadleAddToCart = () => {
+    setUser({
+      ...user,
+      shoppingCartItems: [...user.shoppingCartItems, findProduct.id],
+    });
   };
 
-  const handleSaveDescription = () => {
-    console.log('Descripción editada:', editedDescription);
-    setIsEditing(false); 
-  };
+  const API_URL = "http://localhost:3000/products";
 
-  const handleDelete = () => {
-    console.log('Producto eliminado:', producto);
-  };
+  useEffect(() => {
+    isSetLoading(true);
+    const getProducts = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setProducts(response.data);
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          setError("No products");
+        } else {
+          setError("Error fetching products");
+        }
+      } finally {
+        setTimeout(() => {
+          isSetLoading(false);
+        }, 1000);
+      }
+    };
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      alert("Error loading products");
+      setError(null);
+    }
+  }, [error]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+  const findProduct = products?.find(
+    (product) => product.id.toString() === id.toString()
+  );
+  const { title, price, description, image, category } = findProduct;
 
   return (
-    <div>
-      <h2>{producto.title}</h2>
-      <img src={producto.image} alt={producto.title}  />
-      <h3>{producto.category}</h3>
-      {isEditing ? (
-        <textarea
-          value={editedDescription}
-          onChange={handleDescriptionChange}
-        />
-      ) : (
-        <p>{producto.description}</p>
-      )}
-      <p>${producto.price}</p>
-      {isEditing ? (
-        <button onClick={handleSaveDescription}>Guardar Descripción</button>
-      ) : (
-        <>
-          <button onClick={() => setIsEditing(true)}>Editar Descripción</button>
-          <button onClick={handleDelete}>Eliminar Producto</button>
-        </>
-      )}
-    </div>
+    <main className="product-details-container">
+      <img
+        src={image}
+        alt={title}
+      />
+      <div className="product-details-description">
+        <Link to="/">Volver</Link>
+        <h2>{title}</h2>
+        <p className="product-details-price">{price}€</p>
+        <p>{description}</p>
+        <p className="product-details-category">Category: {category}</p>
+        <button
+          onClick={hadleAddToCart}
+          className="product-details-btn"
+        >
+          Agregar al carrito
+        </button>
+      </div>
+    </main>
   );
 }
-
-export default ProductDetail;

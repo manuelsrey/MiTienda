@@ -1,43 +1,35 @@
-.footer {
-  background-color: #f0f0f0;
-  padding: 20px;
+.footer-container {
+  font-size: 0.8rem;
+  padding: 1rem;
   display: flex;
-  justify-content: space-around;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transición para el cambio de tema */
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
-.footer-section {
-  flex: 1;
-  margin-right: 20px;
+.dark-mode {
+  background-color: rgb(38, 38, 38);
+  color: white;
+}
+.light-mode {
+  background-color: #f0f0f0;
+  color: rgb(38, 38, 38);
 }
 
-.footer-section h3 {
-  color: #333;
-  font-size: 18px;
-  margin-bottom: 10px;
+.footer-details {
+  display: flex;
+  justify-content: center;
+  gap: 6vw;
 }
 
-.footer-section p {
-  margin: 0;
-  color: #666;
+@media (max-width: 30rem) {
+  .footer-details {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 5px;
-  color: #666;
-}
-
-.footer.dark-mode {
-  background-color: #222; /* Cambia el color de fondo en modo oscuro */
-  color: #fff; /* Cambia el color de texto en modo oscuro */
-}
-
-.footer.light-mode {
-  background-color: #f0f0f0; /* Cambia el color de fondo en modo claro */
-  color: #333; /* Cambia el color de texto en modo claro */
+.footer-details li:first-child {
+  font-weight: 900;
+  margin-bottom: 0.4rem;
 }

@@ -1,46 +1,45 @@
 import { createBrowserRouter } from "react-router-dom";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Layout from "../components/Layout/Layout";
 import ProductsSection from "../components/ProductsSection/ProductsSection";
-import CartSummary from '../components/CartSummary/CartSummary'
-import LoginForm from "../components/LoginForm/LoginForm";
+import Cart from "../components/Cart/Cart";
+import LoginForm from "../components/Login/LoginForm";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
-import NotFound from '../views/NotFound/NotFound';
+import ProtectedRouter from "../components/ProtectedRouter/ProtectedRouter";
+import NotFound from "../components/NotFound/NotFound"
 
 export const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
         path: "/",
-        element: <Layout />,
-        errorElement: <NotFound />,
-        children: [
-            {
-                children: [
-                    { 
-                        path: "/",
-                        element: <ProductsSection />
-                    },
-                    {
-                        path: "/product/:productId",
-                        element: (
-                            <ProtectedRoute>
-                                <ProductDetails />
-                            </ProtectedRoute>
-                        )
-                    },
-                    {
-                        path: "/cart",
-                        element: (
-                            <ProtectedRoute>
-                                <CartSummary />
-                            </ProtectedRoute>
-                        )
-                    },
-                    {
-                        path: "/login",
-                        element: <LoginForm />
-                    }
-                ]
-            }
-        ]
-    }
+        element: <ProductsSection />,
+      },
+      {
+        path: "/product/:id",
+        element: (
+          <ProtectedRouter>
+            <ProductDetails />
+          </ProtectedRouter>
+        ),
+      },
+      {
+        path: "/cart",
+        element: (
+          <ProtectedRouter>
+            <Cart />
+          </ProtectedRouter>
+        ),
+      },
+      {
+        path: "/login",
+        element: <LoginForm />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ]);

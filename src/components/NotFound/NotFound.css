@@ -1,0 +1,15 @@
+.page-not-found {
+  max-width: 40rem;
+  margin: 5rem auto;
+  padding: 1rem;
+}
+
+.page-not-found h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error {
+  text-decoration: underline;
+  color: blue;
+}

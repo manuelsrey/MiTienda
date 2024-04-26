@@ -1,36 +1,75 @@
-import React from 'react';
-import './ProductCard.css';
-import { useAuth } from '../../contexts/AuthContext';
-import { useCart } from '../../contexts/CartContext';
+import "./ProductCard.css";
+import { UserContext } from "../../Contexts/UserContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { Edit2, Trash2 } from "react-feather";
 
-function ProductCard({ product, isAdmin, onEdit }) {
-  const { user } = useAuth();
-  const { addToCart } = useCart();
+export default function ProductCard({
+  product,
+  deleteProduct,
+  editProduct,
+  setModalType,
+}) {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  const handleAddToCart = () => {
-    addToCart(product);
-    console.log('Producto agregado a la cesta');
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    setUser({
+      ...user,
+      shoppingCartItems: [...user.shoppingCartItems, product.id],
+    });
   };
 
-  const handleDelete = () => {
-    console.log('Producto eliminado');
+  const handleCardClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+
+  const handleEditProduct = (e) => {
+    e.stopPropagation();
+    editProduct(product.id);
+    setModalType("edit");
+  };
+
+  const handleDeleteProduct = (e) => {
+    e.stopPropagation();
+    deleteProduct(product.id);
   };
 
   return (
-    <div className="product-card">
-      <img src={product.image} alt={product.title} />
-      <h3>{product.title}</h3>
-      <p>{product.description}</p>
-      <p>Precio: ${product.price}</p>
-      {user && <button onClick={handleAddToCart}>Agregar a la cesta</button>}
-      {isAdmin && (
-        <>
-          <button onClick={onEdit}>Editar Producto</button>
-          <button onClick={handleDelete}>Eliminar Producto</button>
-        </>
+    <div
+      onClick={handleCardClick}
+      className="product-card"
+    >
+      <img
+        className="card-img"
+        src={product.image}
+        alt={product.title}
+      />
+      <div className="card-body">
+        <h3 className="card-title">{product.title}</h3>
+        <p className="card-description">{product.description}</p>
+        <p className="card-price">{product.price}€</p>
+      </div>
+
+      {user.isLogged && (
+        <button
+          onClick={handleAddToCart}
+          className="card-btn"
+        >
+          Agregar carrito
+        </button>
+      )}
+      {user.role === "admin" && (
+        <div className="edit-delete-btn">
+          <button onClick={handleEditProduct}>
+            <Edit2 />
+          </button>
+          <button onClick={handleDeleteProduct}>
+            <Trash2 color={"red"} />
+          </button>
+        </div>
       )}
     </div>
   );
 }
-
-export default ProductCard;

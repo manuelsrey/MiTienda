@@ -1,40 +1,15 @@
-import React, { useState } from 'react';
-import Header from '../Header/Header';
-import Banner from '../Banner/Banner';
-import Footer from '../Footer/Footer';
-import NavigationBar from '../NavigationBar/NavigationBar';
-import CartSummary from '../CartSummary/CartSummary';
-import ProductsSection from '../ProductsSection/ProductsSection';
-import AdminPage from '../../views/AdminPage/AdminPage';
-import productos from '../../assets/data.json';
-import { Outlet } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import { Outlet } from "react-router-dom";
+import Banner from "../Banner/Banner";
 
-function Layout() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showCartSummary, setShowCartSummary] = useState(false);
-  const { user } = useAuth(); 
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  React.useEffect(() => {
-    const storedIsAdmin = localStorage.getItem('isAdmin');
-    if (storedIsAdmin === 'true') {
-      setIsAdmin(true);
-    }
-  }, []);
-
+export default function Layout() {
   return (
-    <div>
-      <Header setSearchTerm={setSearchTerm} setShowCartSummary={setShowCartSummary} />
+    <>
+      <Header />
       <Banner />
-      <NavigationBar />
-          
-      {showCartSummary ? <CartSummary /> : <ProductsSection productos={productos} searchTerm={searchTerm} />}
-      {isAdmin && <AdminPage />} 
-      {user && <Outlet />}
+      <Outlet />
       <Footer />
-    </div>
+    </>
   );
 }
-
-export default Layout;

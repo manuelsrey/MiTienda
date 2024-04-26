@@ -1,32 +1,32 @@
-import React from 'react';
-import './Footer.css';
-import { useTheme } from '../../contexts/ThemeContext';
+import "./Footer.css";
+import { UserContext } from "../../Contexts/UserContext";
+import { useContext } from "react";
 
-function Footer() {
-  const { isDarkMode } = useTheme();
-
+export default function Footer() {
+  const { user } = useContext(UserContext);
   return (
-    <footer className={isDarkMode ? 'footer dark-mode' : 'footer light-mode'}>
-      <div className="footer-section">
-        <h3>Contacto</h3>
-        <p>Correo electrónico: info@mitienda.com</p>
-        <p>Teléfono: +34 123-456-789</p>
-      </div>
-      <div className="footer-section">
-        <h3>Redes Sociales</h3>
+    <footer
+      className={`footer-container ${user.isDarkMode ? "dark-mode" : "light-mode"}`}
+    >
+      <div className="footer-details">
         <ul>
+          <li>Contacto</li>
+          <li>Email: info@mitienda.com</li>
+          <li>Teléfono: +34 123 456 789</li>
+        </ul>
+        <ul>
+          <li>Redes Sociales</li>
           <li>Facebook</li>
-          <li>Twitter</li>
+          <li>Twiter</li>
           <li>Instagram</li>
         </ul>
+        <ul>
+          <li>Dirección</li>
+          <li>Calle: Principal, 123</li>
+          <li>Ciudad: País</li>
+        </ul>
       </div>
-      <div className="footer-section">
-        <h3>Dirección</h3>
-        <p>Calle Principal, 123</p>
-        <p>Ciudad, País</p>
-      </div>
+      <p>© 2023 MiTienda. Todos los derechos reservados</p>
     </footer>
   );
 }
-
-export default Footer;
