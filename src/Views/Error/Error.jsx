@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import "./NotFound.css";
+import "./Error.css";
 
-export default function Error() {
+export default function Error({ error }) {
   return (
-    <div className="page-not-found">
-      <h1>404 Not Found</h1>
+    <div className="error-container">
+      <h1>Error: {error}</h1>
       <p>Página no encontrada</p>
       <Link
-        className="error"
+        className="error-link"
         to="/"
       >
         Volver a la página principal

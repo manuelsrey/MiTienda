@@ -33,7 +33,7 @@ export default function Header() {
   return (
     <header className={`header-container ${user.isDarkMode ? "dark-mode" : "light-mode"}`}>
       <Link to="/">
-        <h1 className={user.isLogged ? "logged-in-title" : ""}>MiTienda</h1>
+        <h1>{user.isLogged ? "" : "MiTienda"}</h1>
       </Link>
       <nav>
         <ul className="nav-ul">

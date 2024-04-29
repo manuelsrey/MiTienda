@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../components/Layout/Layout";
+import Layout from "../components/layout/Layout";
+import Error from "../Views/Error/Error";
 import ProductsSection from "../components/ProductsSection/ProductsSection";
-import Cart from "../components/Cart/Cart";
-import LoginForm from "../components/Login/LoginForm";
-import ProductDetails from "../components/ProductDetails/ProductDetails";
+import Cart from "../Views/Cart/Cart";
+import LoginForm from "../Views/LoginForm/LoginForm";
 import ProtectedRouter from "../components/ProtectedRouter/ProtectedRouter";
-import NotFound from "../components/NotFound/NotFound"
+import ProductDetails from "../Views/ProductDetails/ProductDetails";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +40,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFound />,
+    element: <Error />,
   },
 ]);

@@ -3,15 +3,21 @@ import { UserContext } from "../../Contexts/UserContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Edit2, Trash2 } from "react-feather";
+import { removeProductThunk } from "../../redux/Reducers/productsReducer"; 
+import { useDispatch } from "react-redux";
 
-export default function ProductCard({
+function ProductCard({
   product,
-  deleteProduct,
-  editProduct,
+  openEditProductModal,
   setModalType,
 }) {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleCardClick = () => {
+    navigate(`/product/${product.id}`);
+  };
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -21,19 +27,15 @@ export default function ProductCard({
     });
   };
 
-  const handleCardClick = () => {
-    navigate(`/product/${product.id}`);
-  };
-
   const handleEditProduct = (e) => {
     e.stopPropagation();
-    editProduct(product.id);
+    openEditProductModal(product.id);
     setModalType("edit");
   };
 
   const handleDeleteProduct = (e) => {
     e.stopPropagation();
-    deleteProduct(product.id);
+    dispatch(removeProductThunk(product.id)); 
   };
 
   return (
@@ -73,3 +75,5 @@ export default function ProductCard({
     </div>
   );
 }
+
+export default ProductCard;

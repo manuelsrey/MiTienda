@@ -1,6 +1,6 @@
 import "./CartProduct.css";
 
-const CartProduct = ({ product }) => {
+function CartProduct({ product }) {
   const { image, title, price, quantity } = product;
   return (
     <div className="shopping-card-container">

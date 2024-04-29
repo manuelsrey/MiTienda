@@ -1,15 +1,27 @@
 .header-container {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
-  padding: 1rem 1.5rem;
   align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.nav-ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-ul li {
+  font-size: 1rem;
 }
 
 .dark-mode {
   background-color: rgb(38, 38, 38);
   color: white;
 }
+
 .light-mode {
   background-color: #f0f0f0;
   color: rgb(38, 38, 38);
@@ -23,10 +35,6 @@
 .header-container h1 {
   font-size: 1.3rem;
   cursor: pointer;
-}
-
-.logged-in-title {
-  color: white;
 }
 
 .search-input {
@@ -52,38 +60,10 @@
   cursor: pointer;
 }
 
-.nav-ul {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  text-transform: uppercase;
-  font-size: 0.6rem;
-  margin-top: 0.2rem;
-}
-
-.acount-ul {
+.account-ul {
   display: flex;
   gap: 1rem;
-}
-
-.acount-ul li {
-  cursor: pointer;
-}
-
-.notification-cicle-container {
-  position: relative;
-  display: inline-block;
-}
-
-.notification-cicle {
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  background-color: rgb(64, 129, 254);
-  color: white;
-  border-radius: 50%;
-  padding: 0.2rem 0.4rem;
-  font-size: 0.7rem;
-  font-weight: bold;
-  transform: translate(50%, -50%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
